@@ -9,7 +9,6 @@ let filter = (data, value, field) => {
             result.push(i);
         }
     }
-
     return result;
 };
 

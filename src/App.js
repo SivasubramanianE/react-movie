@@ -1,49 +1,50 @@
 import React, { useState, Fragment } from 'react'
-import AddUserForm from './forms/AddUserForm'
-import EditUserForm from './forms/EditUserForm'
-import UserTable from './tables/UserTable'
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Card from './card/Card.js'
 import {movieData as _usersData} from './MovieList'
 import {searchWithValues} from './Utils'
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+
 const App = () => {
 
 	// Setting state
 	const [ users, setUsers ] = useState(_usersData)
 	const [ usersData, setUserData ] = useState(_usersData.slice(0,10))
 
+	const [filter , setFilter ] = useState(
+	[{
+		"value" : "",
+		"field" :"title"
+	}],)
 
    const [searchText, setSearchText] = useState("");
+   const movieByfilters = ["title","actors","years"]
 
   // handle change event of search input
   const handleChange = value => {
-	  if(value.target.value == ""){
-		setUsers(_usersData.slice(0,10))
+	
+	setSearchText(value.target.value)
+	  if(value.target.value === ""){
+		console.log("ifff",_usersData)
+		setUserData(_usersData.slice(0,10))
 		  return 
 	  }
-    setSearchText(value.target.value)
-
-	let filter = [{
-		"value" : value.target.value,
-		"field" :"title"
-	}]
-	
+	const filterCopy = [...filter]
+	filterCopy[0].value = value.target.value ;
 	setUserData(searchWithValues(_usersData, filter))
   };
 
-
-  
-
+  const filteredSearch = value  => {
+	const filterCopy = [...filter]
+	filterCopy[0].field = value ;
+  }
 
 	return (
 		<div className="container">
 			<h3>Moview Review Channel</h3>
-			<div >
+			
 				{/* <div className="flex-large">
 					{editing ? (
 					<Fragment>
@@ -58,6 +59,15 @@ const App = () => {
 					)}
 				</div> */}
 				<div>
+					
+					<InputLabel id="filter-by">Filter By</InputLabel>
+       				<Select labelId="filter-by" id="filter-by">
+					{
+					movieByfilters.map(f=>{
+						return <MenuItem value={f} onClick={e => filteredSearch(f)}>{f}</MenuItem>
+					})}   
+       				</Select>
+					<center>
 					<TextField 
 					id="standard-search" 
 					label="Search field" 
@@ -65,19 +75,9 @@ const App = () => {
 					value={searchText} 
 					onChange={handleChange}
 					 />
-
-        			{/* <InputLabel id="demo-simple-select-label">Filter By</InputLabel>
-       				<Select labelId="demo-simple-select-label" id="demo-simple-select">
-					{
-					movieByfilters.map(f=>{
-						return <MenuItem value={f} onClick={a=> sort(f)}>{f}</MenuItem>
-					})}   
-       				</Select> */}
-		
-					<h4>View List</h4>
-					
+					</center>
 					{usersData.map((a,b) => <Card 
-					key={b}
+							key={b}
    							movieName = {a.title}
     						year = {a.year}
     						genre = {a.genre}
@@ -92,7 +92,7 @@ const App = () => {
 					{/* <UserTable users={filterActive?filteredData:users} data={data} editRow={editRow} searchText={searchText}deleteUser={deleteUser} /> */}
 				</div>
 			</div>
-		</div>
+		// </div>
   )
   
 
