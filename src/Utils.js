@@ -5,7 +5,7 @@
 let filter = (data, value, field) => {
     let result = [];
     for (let i of data) {
-        if (search(i[field], value) === true) {
+        if (search(i[field], value) == true) {
             result.push(i);
         }
     }

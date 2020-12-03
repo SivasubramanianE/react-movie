@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
+
+
 import './Card.css';
 class Card extends Component {
+    // const [open, setOpen] = React.useState(false);
     render() {
         return (
-            <div className='wrapper'>
+            <div>
                 <div className='main_card'>
                     <div className='card_left'>
                         <div className='card_datails'>
-                            <h1>{this.props.movieName}</h1>
+                            <h2>{this.props.movieName || ''}</h2>
                             <div className='card_cat'>
-                                <p className='PG'>PG - 13</p>
+                                <p className='PG'>{this.props.duration}</p>
                                 <p className='year'>{this.props.year}</p>
-                                <p className='genre'>{this.props.genre?this.props.genre.join(" | "):null} </p>
-                                <p className='time'>{this.props.time}</p>
+                                <p className='genre'>{this.props.genres?this.props.genres.join(" | "):null} </p>
+                                <p className='time'>{this.props.contentRating}</p>
                             </div>
                             <p className='disc'>{
-                            ((this.props.description).length > 200) ? 
-                            (((this.props.description).substring(0,200)) + '...') : 
+                            ((this.props.description).length > 180) ? 
+                            (((this.props.description).substring(0,180)) + '...') : 
                             this.props.description 
                             }</p>
                             <div className='social-btn'>
-                                <button>
-                                    <i className='fas fa-play'></i> SEE TRAILER
+                                <button >
+                                     EDIT
+                                </button>
+                                <button onClick={() => { this.props.deleteUser(this.props.id)}}>
+                                  DELETE
                                 </button>
                                 <button>
-                                    <i className='fas fa-download'></i> DOWNLOAD
-                                </button>
-                                <button>
-                                    <i className='fas fa-thumbs-up'></i> 97%
-                                </button>
-                                <button>
-                                    <i className='fas fa-star'></i>
+                                IMB Rating : {this.props.imdbRating ? this.props.imdbRating : 0}
                                 </button>
                             </div>
                         </div>
@@ -38,11 +38,6 @@ class Card extends Component {
                     <div className='card_right'>
                         <div className='img_container'>
                             <img src={this.props.movieImage} alt='' />
-                        </div>
-                        <div className='play_btn'>
-                            <a href={this.props.playbuttonLink} target='_blank'>
-                                <i className='fas fa-play-circle'></i>
-                            </a>
                         </div>
                     </div>
                 </div>
