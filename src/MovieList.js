@@ -654,7 +654,7 @@ export let  movieData = [
         "releaseDate": "2018-02-16",
         "averageRating": 0,
         "originalTitle": "",
-        "storyline": "",
+        "storyline": "Chinese action-fantasy film directed by Cheang Pou-soi and starring Donnie Yen as the titular protagonist Sun Wukong. Yen also serves as the film's action director. Production began in Beijing",
         "actors": [
             "Aaron Kwok",
             "William Feng",

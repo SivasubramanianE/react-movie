@@ -1,16 +1,11 @@
 body {
-  background: lightgreen;
+  background: #505650;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .fabPosition{
@@ -29,7 +24,12 @@ code {
   .close-btn{
     margin-left: 10px !important;
   }
-  .MuiButton-textSecondary{
+.MuiButton-textSecondary{
     background: #3ADED9 !important;
     margin-right: 10px !important;
   }
+
+.MuiAppBar-colorPrimary {
+    color:#fff !important;
+    background-color: #1d1d1d !important;
+}

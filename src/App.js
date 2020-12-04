@@ -10,6 +10,8 @@ import Header from "./Header/Header";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FormDialog from "./MovieDailog/MovieDailog";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+const theme = createMuiTheme({ palette: { type: "dark" } });
 const App = () => {
 
   // Setting state
@@ -54,7 +56,7 @@ const App = () => {
     }
     const filterCopy = [...filter];
     filterCopy[0].value = value.target.value;
-    setMovie(searchWithValues(_usersData, filter));
+    setMovie(searchWithValues(sorted, filter));
   };
 
   const filteredSearch = (dropDownSearch) => {
@@ -114,6 +116,7 @@ const App = () => {
   };
 
   return (
+    <MuiThemeProvider theme={theme}>
     <div>
       <Header
         onChange={handleChange}
@@ -166,6 +169,7 @@ const App = () => {
         </Fab>
       </div>
     </div>
+    </MuiThemeProvider>
   );
 };
 

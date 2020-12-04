@@ -3,7 +3,6 @@
 
   // filter records by search text
 let filter = (data, value, field) => {
-    console.log(data, value, field)
     let result = [];
     for (let i of data) {
         if (search(i[field], value) == true) {

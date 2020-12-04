@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
             display: 'block',
         },
     },
+
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -60,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '30ch',
+            width: '35ch',
             '&:focus': {
                 width: '35ch',
             },
@@ -68,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     },
     sortas_color:{
         color:'white',
-        backgroundColor: '#5c6bc0'
+        backgroundColor:'#3ddfd5'
     },
     fontWhiteColor:{
         color: 'white'
@@ -78,16 +79,27 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 120,
     },
     select: {
+        "& option": {
+            background: theme.palette.background.paper
+        },
         '&:before': {
+            color:'black',
             borderColor: 'white',
         },
         '&:after': {
+            color:'black',
             borderColor: 'white',
+           
         }
     },
     active :{
-        backgroundColor:'white'
-    }
+        color:'black',
+        backgroundColor:'white',
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white),
+            backgroundColor:'white'
+          },
+    },
 }));
 
 export default function Header(props) {
