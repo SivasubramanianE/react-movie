@@ -21,6 +21,10 @@ class Card extends Component {
                             (((this.props.description).substring(0,180)) + '...') : 
                             this.props.description 
                             }</p>
+                            <div>
+                            <p className='actors'>{this.props.actors?this.props.actors.join(" | "):null} </p>
+                            </div>
+                           
                             <div className='social-btn'>
                                 <button onClick={() => this.props.handleClickOpen(this.props.id)} >
                                      EDIT

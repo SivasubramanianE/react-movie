@@ -58,9 +58,7 @@ body {
 }
 
 .PG {
-	background: #92FE9D;
-	-webkit-box-shadow: 0 0 50px rgba(0,0,0,0.1);
-	        box-shadow: 0 0 50px rgba(0,0,0,0.1);
+	background: #3ADED9;
 }
 
 .disc {
@@ -72,20 +70,21 @@ body {
 	margin-left: -10px;
 }
 button {
-	color: #fff;
-	border: none;
-	padding: 20px;
-	outline: none;
-	font-size: 12px;
-	margin-top: 30px;
-	margin-left: 10px;
-	background: #92FE9D;
-	border-radius: 12px;
-	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-	        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-	-webkit-transition: 300ms ease-in-out;
-	-o-transition: 200ms ease-in-out;
-	transition: 200ms ease-in-out;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    outline: none;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background: #3F51B5;
+    cursor: pointer;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -webkit-transition: 300ms ease-in-out;
+    -o-transition: 200ms ease-in-out;
+    transition: 200ms ease-in-out;
 }
 
 button:hover {
@@ -94,6 +93,10 @@ button:hover {
 	        transform: scale(1.1);
 }
 
+.actors{
+    color: red;
+    font-weight: 600;
+}
 
 
 

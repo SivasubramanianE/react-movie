@@ -34,7 +34,7 @@ class FormDialog extends Component {
         if (!this.state.Movie.title || !this.state.Movie.year || !this.state.Movie.duration || !this.state.Movie.storyline) return;
 
         let self = this;
-        this.setState({ ...this.state.Movie, genres: [this.state.Movie.genres] }, () => {
+        this.setState({ ...this.state.Movie, title: [this.state.Movie.title] }, () => {
           if(this.state.Movie.id){
             self.props.updateUser(self.state.Movie);
           }else{
@@ -54,8 +54,6 @@ class FormDialog extends Component {
                             <TextField type='text' name='title' margin='dense' autoFocus value={this.state.Movie.title} label='Title' onChange={this.inputChange} fullWidth />
 
                             <TextField type='text' name='year' margin='dense' value={this.state.Movie.year} label='Year' onChange={this.inputChange} fullWidth />
-
-                            <TextField type='text' name='genres' margin='dense' value={this.state.Movie.genres} label='Genres' onChange={this.inputChange} fullWidth />
 
                             <TextField type='text' name='duration' margin='dense' value={this.state.Movie.duration} label='Duration' onChange={this.inputChange} fullWidth />
 

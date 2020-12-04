@@ -141,15 +141,16 @@ const App = () => {
             id={a.id}
             movieName={a.title}
             year={a.year}
-            genres={a.genres}
-            duration={a.duration}
-            contentRating={a.contentRating}
+            genres={a.genres?a.genres:null}
+            duration={a.duration?a.duration:'PT119M'}
+            contentRating={a.contentRating?a.contentRating:'R'}
             description={a.storyline}
             readmorelink={a.year}
-            movieImage={a.posterurl}
             imdbRating={a.imdbRating}
+            actors={a.actors}
+            movieImage={a.posterurl?a.posterurl:'https://images-na.ssl-images-amazon.com/images/M/MV5BMjI1NTk0NTc1OV5BMl5BanBnXkFtZTgwNTMwMTE4NDM@._V1_SY500_CR0,0,281,500_AL_.jpg'}
             deleteUser={deleteUser}
-			handleClickOpen={editModel}
+			      handleClickOpen={editModel}
           />
         ))}
       </div>
