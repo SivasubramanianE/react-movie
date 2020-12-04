@@ -609,7 +609,7 @@ export let  movieData = [
     },
     {
         "id": "12",
-        "title": "Xiyouji zhi N\u00fc'erguo",
+        "title": "Xiyouji zhi 'erguo",
         "year": "2018",
         "genres": [
             "Action",

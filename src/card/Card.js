@@ -23,7 +23,7 @@ class Card extends Component {
                             this.props.description 
                             }</p>
                             <div className='social-btn'>
-                                <button >
+                                <button onClick={() => this.props.handleClickOpen(this.props.id)} >
                                      EDIT
                                 </button>
                                 <button onClick={() => { this.props.deleteUser(this.props.id)}}>
