@@ -3,6 +3,7 @@
 
   // filter records by search text
 let filter = (data, value, field) => {
+    console.log(data, value, field)
     let result = [];
     for (let i of data) {
         if (search(i[field], value) == true) {
@@ -15,12 +16,12 @@ let filter = (data, value, field) => {
 let search = (ar, v) => {
     if (Array.isArray(ar)) {
         for (let i of ar) {
-            if (i == v) {
+            if (i.toLowerCase().includes(v.toLowerCase())) {
                 return true;
             }
         }
     } else {
-        if (ar == v) {
+        if (ar.toLowerCase().includes(v.toLowerCase())) {
             return true;
         }
     }

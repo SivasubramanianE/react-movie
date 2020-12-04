@@ -2,7 +2,7 @@ export let  movieData = [
     {
         "id": "1",
         "title": "Black Panther",
-        "year": "2018",
+        "year": "2020",
         "genres": [
             "Action",
             "Adventure",

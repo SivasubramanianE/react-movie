@@ -11,9 +11,10 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import FormDialog from "./MovieDailog/MovieDailog";
 const App = () => {
+
   // Setting state
   const [selectedData, setSelectedData] = useState({});
-  const [Movie, setMovie] = useState(_usersData.slice(0, 20));
+  const [Movie, setMovie] = useState(_usersData.slice(0, 500));
   const [filter, setFilter] = useState([
     {
       value: "",
@@ -21,11 +22,28 @@ const App = () => {
     },
   ]);
   const [sort, setSort] = useState("asc");
+  const [isSortYear,isSortupdated]  = useState(false)
 
   const [searchText, setSearchText] = useState("");
   const movieByfilters = ["title", "actors", "year"];
 
   const [open, setOpen] = React.useState(false);
+
+   // CRUD operations
+   const addMovie = (movie) => {
+   	movie.id = Movie.length + 1;
+   	setMovie([...Movie, movie]);
+   	setOpen(false);
+     };
+   
+     const deleteUser = (id) => {
+   	setMovie(Movie.filter((a) => a.id !== id));
+     };
+   
+     const updateUser = (editMovie) => {
+   	setMovie(Movie.map(movieList => (movieList.id == editMovie.id ? editMovie : movieList)))
+   	setOpen(false);	
+   	}
 
   // handle change event of search input
   const handleChange = (value) => {
@@ -43,16 +61,28 @@ const App = () => {
     const filterCopy = [...filter];
     filterCopy[0].field = dropDownSearch.target.value;
   };
+  
   // SORTING
   const sorted = Movie.sort((a, b) => {
-    const isRevesed = sort === "asc" ? 1 : -1;
-    return isRevesed * a.title.localeCompare(b.title);
+	const isRevesed = sort === "asc" ? 1 : -1;
+	if(isSortYear){
+		return isRevesed * a.year.localeCompare(b.year);
+	}else{
+		return isRevesed * a.title.localeCompare(b.title);
+	}
+    
   });
 
-  let sortType = (sortByAZ) => {
-    setSort(sortByAZ);
+  let sortType = (data) => {
+	setSort(data);
+	isSortupdated(false);
   };
 
+  let sortByYear= (data) =>{
+	  setSort(data);
+	  isSortupdated(true);
+
+  }
   //DAIALOG
   const handleClickOpen = (a) => {
       setSelectedData({
@@ -77,27 +107,10 @@ const App = () => {
     setOpen(false);
   };
 
-  // CRUD operations
-  const addMovie = (movie) => {
-    console.log("Movie", movie);
-    movie.id = Movie.length + 1;
-    setMovie([...Movie, movie]);
-  };
 
-  const deleteUser = (id) => {
-    setMovie(Movie.filter((a) => a.id !== id));
-  };
-
-  const updateUser = (id) => {
-    console.log("updatedUser",updatedUser);
-		setEditing(false)
-		setUsers(users.map(user => (user.id === id ? updatedUser : user)))
-	}
   
   const inputChange = (event) => {
-    console.log(event.target);
-    // const { title, value } = event.target
-    // setMovie({ ...Movie, [title]: value })
+  
   };
 
   return (
@@ -107,7 +120,10 @@ const App = () => {
         value={searchText}
         filteredSearch={filteredSearch}
         movieSubsearch={movieByfilters}
-        sortAZ={sortType}
+		sortByAz={sortType}
+		sortByYear={sortByYear}
+		isSortYear={isSortYear}
+		sort={sort}
       />
       <FormDialog
         openDailog={open}

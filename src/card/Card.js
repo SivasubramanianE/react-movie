@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 import './Card.css';
 class Card extends Component {
-    // const [open, setOpen] = React.useState(false);
     render() {
         return (
             <div>

@@ -70,14 +70,14 @@ const useStyles = makeStyles((theme) => ({
         color:'white',
         backgroundColor: '#5c6bc0'
     },
-    sortas_white_color:{
-        backgroundColor: '#5c6bc0'
+    fontWhiteColor:{
+        color: 'white'
     },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
-      },
-      select: {
+    },
+    select: {
         '&:before': {
             borderColor: 'white',
         },
@@ -85,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
             borderColor: 'white',
         }
     },
+    active :{
+        backgroundColor:'white'
+    }
 }));
 
 export default function Header(props) {
@@ -137,10 +140,18 @@ export default function Header(props) {
                   
                     
                     <div>
-
+                    <InputLabel id="filter-by" className={classes.fontWhiteColor}>Sort By Title : </InputLabel>
                     <ButtonGroup variant="text"  aria-label="text button group">
-                      <Button className={classes.sortas_color} onClick={ () => { props.sortAZ('asc') } }>ASC</Button>
-                      <Button className={classes.sortas_white_color} onClick={() => { props.sortAZ('desc')}}>DESC</Button>
+                      <Button className={(props.sort === 'asc' && !props.isSortYear)? classes.active: classes.sortas_color}  onClick={ () => { props.sortByAz('asc') } }>ASC</Button>
+                      <Button className={(props.sort === 'desc'&& !props.isSortYear)? classes.active: classes.sortas_color} onClick={() => { props.sortByAz('desc')}}>DESC</Button>
+                    </ButtonGroup>
+                    </div>
+
+                    <div>
+                    <InputLabel id="filter-by" className={classes.fontWhiteColor}>Sort By Release year :</InputLabel>
+                    <ButtonGroup variant="text"  aria-label="text button group">
+                      <Button className={(props.sort === 'asc' && props.isSortYear)? classes.active: classes.sortas_color} onClick={ () => { props.sortByYear('asc') } }>ASC</Button>
+                      <Button className={(props.sort === 'desc'&& props.isSortYear)? classes.active: classes.sortas_color} onClick={() => { props.sortByYear('desc')}}>DESC</Button>
                     </ButtonGroup>
                     </div>
                     </Grid>

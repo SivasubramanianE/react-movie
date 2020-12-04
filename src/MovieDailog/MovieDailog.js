@@ -17,15 +17,14 @@ class FormDialog extends Component {
           
             Movie: this.props.initialFormState,
         };
-        console.log(this.props)
+    
     }
     
     componentWillReceiveProps(props) {
       this.setState({ Movie: props.initialFormState });
-      console.log(props)
+    
   }
     inputChange = (event) => {
-      console.log(event)
         const { name, value } = event.target;
         this.setState({ Movie: { ...this.state.Movie, [name]: value } });
     };
@@ -37,7 +36,6 @@ class FormDialog extends Component {
         let self = this;
         this.setState({ ...this.state.Movie, genres: [this.state.Movie.genres] }, () => {
           if(this.state.Movie.id){
-            console.log(self.state)
             self.props.updateUser(self.state.Movie);
           }else{
             self.props.addMovie(self.state.Movie);
