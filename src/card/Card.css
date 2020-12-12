@@ -13,13 +13,10 @@ body {
 	display: -ms-flexbox;
 	display: flex;
 	max-width: 770px;
-	background: #00C9FF; 
-	background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);
-	background: -webkit-linear-gradient(left, #92FE9D, #00C9FF);
-	background: -o-linear-gradient(left, #92FE9D, #00C9FF);
-	background: linear-gradient(to right, #92FE9D, #00C9FF); 
+	background: #41d8a7; 
 	-webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3); 
-	        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+			box-shadow: 0 0 40px rgba(0,0,0,0.3);
+	border-radius: 40px;
 }
 
 .card_left {
@@ -35,6 +32,9 @@ body {
 .card_right img {
 	height: 390px;
 	border-radius: 2px;
+	width: 15rem;
+	border-top-right-radius: 35px;
+    border-bottom-right-radius: 35px;
 }
 .card_right {
 	border-radius: 2px;
